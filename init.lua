@@ -89,10 +89,12 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.cmd 'set expandtab'
 vim.cmd 'set tabstop=2'
 vim.cmd 'set softtabstop=2'
 vim.cmd 'set shiftwidth=2'
+vim.cmd 'set conceallevel=1'
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -972,6 +974,7 @@ require('lazy').setup({
   require 'custom.plugins.colorthemes',
   require 'custom.plugins.lualine',
   require 'plugins.harpoon',
+  require 'plugins.obsidian',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
