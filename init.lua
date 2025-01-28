@@ -197,6 +197,17 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('i', 'kj', '<Esc>')
+
+-- For markdown files make navigation through soft-wrapped lines easier.
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.keymap.set('n', 'j', "v:count ? 'j' : 'gj'", { buffer = true, expr = true, noremap = true })
+    vim.keymap.set('n', 'k', "v:count ? 'k' : 'gk'", { buffer = true, expr = true, noremap = true })
+  end,
+})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
