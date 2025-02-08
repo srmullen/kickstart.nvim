@@ -988,6 +988,7 @@ require('lazy').setup({
   require 'custom.plugins.lualine',
   require 'plugins.harpoon',
   require 'plugins.obsidian',
+  require 'plugins.hover',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
