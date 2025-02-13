@@ -994,6 +994,7 @@ require('lazy').setup({
   require 'plugins.hover',
   require 'plugins.undotree',
   require 'plugins.aerial',
+  require 'plugins.git',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
