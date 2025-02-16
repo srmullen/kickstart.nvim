@@ -24,6 +24,14 @@ return {
       max_tokens = 4096,
       timeout = 30000,
     },
+    vendors = {
+      ollama = {
+        __inherited_from = 'openai',
+        api_key_name = '',
+        endpoint = 'http://127.0.0.1:11434/v1',
+        model = 'deepseek-r1:14b',
+      },
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make BUILD_FROM_SOURCE=true',
