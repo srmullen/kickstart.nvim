@@ -199,6 +199,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('i', 'kj', '<Esc>')
 
+-- insert timestamp
+vim.keymap.set('n', '<leader>ts', [[!!date "+\%Y-\%m-\%d \%H:\%M:\%S"<CR>]], { desc = 'Insert [T]ime[S]tamp' })
+
 -- For markdown files make navigation through soft-wrapped lines easier.
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
@@ -689,6 +692,7 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      ---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
