@@ -19,10 +19,11 @@ return {
     provider = 'claude',
     claude = {
       endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-5-sonnet-20241022',
+      model = 'claude-3-7-sonnet-latest',
       temperature = 0,
       max_tokens = 4096,
       timeout = 30000,
+      disable_tools = true,
     },
     vendors = {
       ollama = {
