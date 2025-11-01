@@ -1080,6 +1080,8 @@ require('lazy').setup({
   require 'plugins.java',
   require 'plugins.trouble',
   require 'plugins.conjure',
+  -- require 'plugins.go',
+  require 'plugins.dap',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
