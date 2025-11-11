@@ -2,7 +2,6 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      'leoluz/nvim-dap-go',
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',
       'nvim-neotest/nvim-nio',
@@ -12,10 +11,7 @@ return {
       local dap = require 'dap'
       local dapui = require 'dapui'
 
-      require('dap-go').setup()
-
       require('dapui').setup()
-      require('dap-go').setup()
       require('nvim-dap-virtual-text').setup()
 
       dap.listeners.before.attach.dapui_config = function()
@@ -35,6 +31,12 @@ return {
       vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, {})
       vim.keymap.set('n', '<Leader>dc', dap.continue, {})
       vim.keymap.set('n', '<Leader>dr', ":lua require('dapui').open({reset = true})<CR>", {})
+
+      vim.keymap.set('n', '<Leader>dn', dap.step_over)
+      vim.keymap.set('n', '<Leader>dp', dap.step_out)
+      vim.keymap.set('n', '<Leader>dj', dap.step_over)
+      vim.keymap.set('n', '<Leader>dn', dap.step_into)
+      vim.keymap.set('n', '<Leader>dk', dap.step_back)
 
       vim.keymap.set('n', '<Leader>?', function()
         require('dapui').eval(nil, { enter = true })
