@@ -21,10 +21,22 @@ return {
     'shaunsingh/nord.nvim',
     enabled = true,
     priority = 1000,
+    -- config = function()
+    --   vim.cmd [[colorscheme nord]]
+    -- end,
+  },
+
+  {
+    'rmehri01/onenord.nvim',
+    priority = 1000,
     config = function()
-      vim.cmd [[colorscheme nord]]
+      vim.cmd [[colorscheme onenord]]
     end,
   },
 
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+
+  {
+    'nyoom-engineering/oxocarbon.nvim',
+  },
 }
