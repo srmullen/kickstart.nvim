@@ -1022,6 +1022,7 @@ require('lazy').setup({
         'bash',
         'c',
         'diff',
+        'helm',
         'html',
         'lua',
         'luadoc',
