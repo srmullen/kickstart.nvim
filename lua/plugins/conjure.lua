@@ -1,5 +1,8 @@
 return {
-  'Olical/conjure',
+  {
+    'Olical/conjure',
+    ft = { 'clj', 'cljs' },
+  },
 
   -- Structural editing
   'guns/vim-sexp',
