@@ -1015,10 +1015,11 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main', -- the `master` branch does not support Neovim 0.12+
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    opts = {
-      ensure_installed = {
+    lazy = false,
+    config = function()
+      require('nvim-treesitter').install {
         'bash',
         'c',
         'diff',
@@ -1035,26 +1036,30 @@ require('lazy').setup({
         'typescript',
         'go',
         'clojure',
-        'javascript',
         'zig',
         'yaml',
-        'jsonc',
+        'json',
         'vue',
         'css',
-        'yaml',
-        'jsonc',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
+      }
+
+      -- jsonc parser was dropped upstream; highlight jsonc files with the json grammar instead
+      vim.treesitter.language.register('json', 'jsonc')
+
+      -- Enable highlighting and indentation for any filetype with an installed parser
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+          if not lang or not pcall(vim.treesitter.language.add, lang) then
+            return
+          end
+          if not pcall(vim.treesitter.start, args.buf, lang) then
+            return
+          end
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
@@ -1096,6 +1101,7 @@ require('lazy').setup({
   require 'plugins.helm',
   require 'plugins.neogit',
   require 'plugins.diffview',
+  require 'plugins.tabby',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
