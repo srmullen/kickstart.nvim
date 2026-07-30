@@ -1042,6 +1042,7 @@ require('lazy').setup({
         'vue',
         'css',
         'toml',
+        'svelte',
       }
 
       -- jsonc parser was dropped upstream; highlight jsonc files with the json grammar instead
