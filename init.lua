@@ -1043,6 +1043,7 @@ require('lazy').setup({
         'css',
         'toml',
         'svelte',
+        'dockerfile',
       }
 
       -- jsonc parser was dropped upstream; highlight jsonc files with the json grammar instead
