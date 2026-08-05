@@ -411,6 +411,15 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          -- The new nvim-treesitter (main branch) dropped the old
+          -- `nvim-treesitter.parsers` API that telescope's previewer relies
+          -- on for treesitter highlighting, so disable it here and fall
+          -- back to regular vim syntax highlighting in previews.
+          preview = {
+            treesitter = false,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
