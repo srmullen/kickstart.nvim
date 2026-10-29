@@ -673,6 +673,15 @@ require('lazy').setup({
 
         jdtls = {},
 
+        -- Python: pyright for types/completion, ruff for linting
+        pyright = {},
+        ruff = {
+          on_attach = function(client)
+            -- Let pyright handle hover
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
+
         -- Vue language server configuration
         -- volar = {
         --   init_options = {
@@ -831,6 +840,7 @@ require('lazy').setup({
         typescript = { 'prettier' },
         javascript = { 'prettier' },
         vue = { 'prettier' },
+        python = { 'ruff_organize_imports', 'ruff_format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -1054,6 +1064,7 @@ require('lazy').setup({
         'svelte',
         'dockerfile',
         'make',
+        'python',
       }
 
       -- jsonc parser was dropped upstream; highlight jsonc files with the json grammar instead
